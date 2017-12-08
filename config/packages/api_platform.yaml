@@ -2,6 +2,10 @@ api_platform:
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     collection:
+        order: 'ASC'
+        order_parameter_name: 'key'
         pagination:
             page_parameter_name: page
             client_items_per_page: true
+            items_per_page: 50
+            items_per_page_parameter_name: 'size'

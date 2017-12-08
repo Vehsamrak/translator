@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Ramsey\Uuid\Uuid;
 
 /**
  * @ApiResource
@@ -28,16 +27,6 @@ class Translation
      * @ORM\Column(type="string")
      */
     private $translation;
-
-    public function __construct()
-    {
-        $this->id = Uuid::uuid4();
-    }
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
 
     public function getKey(): string
     {
