@@ -6,7 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource
+ * @ApiResource(attributes={"filters"={"translation.search_filters"}})
  * @ORM\Entity(repositoryClass="App\Repository\TranslationRepository")
  * @ORM\Table(name="translations")
  */
@@ -27,6 +27,13 @@ class Translation
      * @ORM\Column(type="string")
      */
     private $translation;
+
+    public function __construct(string $key, string $language, string $translation)
+    {
+        $this->key = $key;
+        $this->language = $language;
+        $this->translation = $translation;
+    }
 
     public function getKey(): string
     {

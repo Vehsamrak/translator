@@ -1,0 +1,5 @@
+services:
+  translation.search_filters:
+      parent: 'api_platform.doctrine.orm.search_filter'
+      arguments: [ { key: 'partial', language: 'partial' } ]
+      tags: [ 'api_platform.filter' ]
