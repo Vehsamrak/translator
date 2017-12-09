@@ -4,8 +4,10 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * Translation from English to specified language
  * @ApiResource(attributes={"filters"={"translation.search_filters", "translation.order_filter"}})
  * @ORM\Entity(repositoryClass="App\Repository\TranslationRepository")
  * @ORM\Table(name="translations")
@@ -13,18 +15,24 @@ use Doctrine\ORM\Mapping as ORM;
 class Translation
 {
     /**
+     * English word used as key
      * @ORM\Id
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     private $key;
 
     /**
+     * Language of translation
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     private $language;
 
     /**
+     * Text translated from English to specified language
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     private $translation;
 
