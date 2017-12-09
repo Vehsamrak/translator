@@ -6,7 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource(attributes={"filters"={"translation.search_filters"}})
+ * @ApiResource(attributes={"filters"={"translation.search_filters", "translation.order_filter"}})
  * @ORM\Entity(repositoryClass="App\Repository\TranslationRepository")
  * @ORM\Table(name="translations")
  */
