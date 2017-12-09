@@ -1,5 +1,7 @@
 api_platform:
     version: 0.1.0
+    title: "RESTful Translator"
+    description: "API documentation"
     enable_swagger: true
     enable_swagger_ui: true
     mapping:
