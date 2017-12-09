@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -11,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiResource(attributes={"filters"={"translation.search_filters", "translation.order_filter"}})
  * @ORM\Entity(repositoryClass="App\Repository\TranslationRepository")
  * @ORM\Table(name="translations")
+ * @UniqueEntity("key")
  */
 class Translation
 {
