@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Translation from English to specified language
  * @ApiResource(attributes={"filters"={"translation.search_filters", "translation.order_filter"}})
- * @ORM\Entity(repositoryClass="App\Repository\TranslationRepository")
+ * @ORM\Entity(repositoryClass="TranslationRepository")
  * @ORM\Table(name="translations")
  * @UniqueEntity("key")
  */

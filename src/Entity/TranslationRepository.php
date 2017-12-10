@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Repository;
+namespace App\Entity;
 
-use App\Entity\Translation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
