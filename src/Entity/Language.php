@@ -11,10 +11,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Language for translations
  * @ApiResource(
- *     attributes={"filters"={"search_filter", "order_filter"}},
+ *     attributes={
+ *          "filters"={"search_filter", "order_filter"},
+ *          "normalization_context"={"groups"={"translation"}},
+ *          "denormalization_context"={"groups"={"translation"}},
+ *     },
  *     itemOperations={
- *      "get"={"method"="GET"},
- *      "delete"={"method"="DELETE"},
+ *          "get"={"method"="GET"},
+ *          "delete"={"method"="DELETE"},
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\LanguageRepository")
@@ -38,7 +42,7 @@ class Language
         return $this->name;
     }
 
-    public function setName($name): void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
