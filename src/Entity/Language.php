@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -25,16 +26,12 @@ class Language
     /**
      * Name of the language
      * @var string
+     * @Groups({"translation"})
      * @ORM\Id
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
     private $name;
-
-    public function __construct(string $name)
-    {
-        $this->name = $name;
-    }
 
     public function getName(): string
     {

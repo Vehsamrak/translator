@@ -5,11 +5,18 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Translation from English to specified language
- * @ApiResource(attributes={"filters"={"search_filter", "order_filter"}})
+ * @ApiResource(
+ *     attributes={
+ *          "filters"={"search_filter", "order_filter"},
+ *          "normalization_context"={"groups"={"translation"}},
+ *          "denormalization_context"={"groups"={"translation"}},
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\TranslationRepository")
  * @ORM\Table(name="translations")
  * @UniqueEntity("key")
@@ -18,6 +25,7 @@ class Translation
 {
     /**
      * English word used as key
+     * @Groups({"translation"})
      * @ORM\Id
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
@@ -26,31 +34,28 @@ class Translation
 
     /**
      * Language of translation
-     * @ORM\Column(type="string")
+     * @var Language
+     * @Groups({"translation"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Language", cascade={"persist"})
+     * @ORM\JoinColumn(name="language", referencedColumnName="name", nullable=false)
      * @Assert\NotBlank()
      */
     private $language;
 
     /**
      * Text translated from English to specified language
+     * @Groups({"translation"})
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
     private $translation;
-
-    public function __construct(string $key, string $language, string $translation)
-    {
-        $this->key = $key;
-        $this->language = $language;
-        $this->translation = $translation;
-    }
 
     public function getKey(): string
     {
         return $this->key;
     }
 
-    public function getLanguage(): string
+    public function getLanguage(): Language
     {
         return $this->language;
     }
@@ -65,7 +70,7 @@ class Translation
         $this->key = $key;
     }
 
-    public function setLanguage(string $language): void
+    public function setLanguage(Language $language): void
     {
         $this->language = $language;
     }
