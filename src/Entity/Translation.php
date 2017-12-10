@@ -9,8 +9,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Translation from English to specified language
- * @ApiResource(attributes={"filters"={"translation.search_filters", "translation.order_filter"}})
- * @ORM\Entity(repositoryClass="TranslationRepository")
+ * @ApiResource(attributes={"filters"={"search_filter", "order_filter"}})
+ * @ORM\Entity(repositoryClass="App\Repository\TranslationRepository")
  * @ORM\Table(name="translations")
  * @UniqueEntity("key")
  */
